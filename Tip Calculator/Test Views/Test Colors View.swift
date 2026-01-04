@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Test_Colors_View: View {
-    // TODO: Use custom colors
     let colors: [Color] = [.myRed, .myBlack, .myGray, .myWhite, .myDarkGreen, .myLightGreen]
     let dim = 50.0
     
