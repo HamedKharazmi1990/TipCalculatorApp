@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SelectButtonView: View {
     let percentage: Int
-    let color1: Color
-    let color2: Color
+    let color1: Color = .myDarkGreen
+    let color2: Color = .white
     
     @Binding var selectedTip: Int
     @Binding var tipPercentage: Int
@@ -47,8 +47,6 @@ struct SelectButtonView: View {
         Color.myLightGreen.ignoresSafeArea()
         SelectButtonView(
             percentage: 10,
-            color1: .myDarkGreen,
-            color2: .myWhite,
             selectedTip: .constant(5),
             tipPercentage: .constant(TipPercentage.ten.rawValue)
         )
