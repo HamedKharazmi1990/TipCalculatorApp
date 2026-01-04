@@ -8,39 +8,7 @@
 import SwiftUI
 
 struct PaymentSummaryView: View {
-    let tipPercentage: Int
-    let split: Int
-    let bill: Double
-    
-    var tip: Double {
-        bill * Double(tipPercentage) / 100.0
-    }
-    var total: Double {
-        bill + tip
-    }
-    
-    let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        return formatter
-    }()
-    
-    func formattedAmount(value: Double, split: Int) -> String {
-        let newValue = value / Double(split)
-        return formatter
-            .string(from: NSNumber(value: newValue)) ?? "$0"
-    }
-    
-    // TODO: Calculate based on inputs
-    var totalPerPerson: String {
-        formattedAmount(value: total, split: split)
-    }
-    var billPerPerson: String {
-        formattedAmount(value: bill, split: split)
-    }
-    var tipPerPerson: String {
-        formattedAmount(value: tip, split: split)
-    }
+    let tipModel: TipModel
     
     // iPad Support
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -59,7 +27,7 @@ struct PaymentSummaryView: View {
             SubTotalView(
                 title: "Total per person",
                 titleFont: font,
-                amount: totalPerPerson,
+                amount: tipModel.totalPerPerson,
                 amountFont: font
             )
             .frame(
@@ -70,13 +38,13 @@ struct PaymentSummaryView: View {
                 SubTotalView(
                     title: "Bill",
                     titleFont: font,
-                    amount: billPerPerson,
+                    amount: tipModel.billPerPerson,
                     amountFont: font
                 )
                 SubTotalView(
                     title: "Tip",
                     titleFont: font,
-                    amount: tipPerPerson,
+                    amount: tipModel.tipPerPerson,
                     amountFont: font
                 )
             }
@@ -96,10 +64,6 @@ struct PaymentSummaryView: View {
     VStack {
         RoundedRectangle(cornerRadius: 20)
             .fill(.blue.opacity(0.3))
-        PaymentSummaryView(
-            tipPercentage: 10,
-            split: 2,
-            bill: 100
-        )
+        PaymentSummaryView(tipModel: .init(tipPercentage: 10, split: 2, bill: 100))
     }.padding()
 }

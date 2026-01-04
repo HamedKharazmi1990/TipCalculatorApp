@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld" : {
+
+    },
     "Amount" : {
       "localizations" : {
         "es" : {
@@ -44,6 +47,9 @@
           }
         }
       }
+    },
+    "Choose tip" : {
+
     },
     "Choose Tip" : {
       "localizations" : {
