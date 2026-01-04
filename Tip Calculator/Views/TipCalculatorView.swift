@@ -20,22 +20,22 @@ struct TipCalculatorView: View {
             Color.blue.opacity(0.3).ignoresSafeArea()
             
             VStack() {
-                Text("Title View")
+//                Text("Title View")
                 
                 Spacer()
                 
                 VStack(alignment: .leading) {
-                    Text("Enter Total View")
+//                    Text("Enter Total View")
                     
-                    Text("Choose Tip View")
+//                    Text("Choose Tip View")
                 }
-                Text("Split View")
+//                Text("Split View")
                 
                 Spacer()
                 
                 // Payment Summary
                 if !isFocused {
-                    Text("Payment Summary")
+//                    Text("Payment Summary")
                     Spacer()
                 }
             }
