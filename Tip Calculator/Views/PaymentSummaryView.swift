@@ -23,8 +23,17 @@ struct PaymentSummaryView: View {
         "50"
     }
     
-    // TODO: Add iPad support (.largeTitle)
-    var font: Font = .headline
+    // iPad Support
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    var isIPad: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
+    
+    var font: Font {
+        isIPad ? .largeTitle : .headline
+    }
     
     var body: some View {
         GroupBox {
