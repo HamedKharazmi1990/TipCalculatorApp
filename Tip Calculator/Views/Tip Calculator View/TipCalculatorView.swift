@@ -22,57 +22,57 @@ struct TipCalculatorView: View {
     @Binding var layoutDirectionString : String
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                BackgroundView()
-                
-                VStack() {
+        ZStack {
+            BackgroundView()
+            
+            VStack() {
+                HStack {
+                    Spacer()
                     TitleView()
-                    
                     Spacer()
-                    
-                    VStack(alignment: .leading) {
-                        EnterTotalView(
-                            bill: $tipModel.bill,
-                            isFocused: $isFocused
-                        )
-                        
-                        ChooseTipView(tipPercentage: $tipModel.tipPercentage)
-                    }
-                    SplitView(
-                        split: $tipModel.split,
-                        alignment: .leading
-                    )
-                    
-                    Spacer()
-                    
-                    // Payment Summary
-                    if !isFocused {
-                        PaymentSummaryView(tipModel: tipModel)
-                        
-                        Spacer()
-                    }
-                }
-                .padding()
-            }
-            .onTapGesture {
-                UIApplication
-                    .shared
-                    .sendAction(
-                        #selector(UIResponder.resignFirstResponder),
-                        to: nil,
-                        from: nil,
-                        for: nil
-                    )
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    LanguageOptionsTapView(
+                    SettingView(
                         language: $language,
                         layoutDirectionString: $layoutDirectionString
                     )
                 }
+                
+                Spacer()
+                
+                VStack(alignment: .leading) {
+                    EnterTotalView(
+                        bill: $tipModel.bill,
+                        isFocused: $isFocused
+                    )
+                    
+                    ChooseTipView(tipPercentage: $tipModel.tipPercentage)
+                }
+                SplitView(
+                    split: $tipModel.split,
+                    alignment: .leading
+                )
+                
+                Spacer()
+                
+                // Payment Summary
+                if !isFocused {
+                    PaymentSummaryView(
+                        tipModel: tipModel
+                    )
+                    
+                    Spacer()
+                }
             }
+            .padding()
+        }
+        .onTapGesture {
+            UIApplication
+                .shared
+                .sendAction(
+                    #selector(UIResponder.resignFirstResponder),
+                    to: nil,
+                    from: nil,
+                    for: nil
+                )
         }
     }
 }

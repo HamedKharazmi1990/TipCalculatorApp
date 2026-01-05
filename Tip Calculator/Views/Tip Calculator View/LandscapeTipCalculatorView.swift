@@ -18,53 +18,66 @@ struct LandscapeTipCalculatorView: View {
     
     let maxSplit: Int = 10
     
+    @Binding var language : String
+    @Binding var layoutDirectionString : String
+    
     var body: some View {
-        ZStack {
-            BackgroundView()
-            
-            HStack() {
-                VStack(alignment: .leading) {
-                    TitleView()
-                    
-                    EnterTotalView(
-                        bill: $tipModel.bill,
-                        isFocused: $isFocused
-                    )
-                    
-                    HStack {
-                        ChooseTipView(
-                            tipPercentage: $tipModel.tipPercentage
+            ZStack {
+                BackgroundView()
+                
+                HStack() {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Spacer()
+                            TitleView()
+                            Spacer()
+                            SettingView(
+                                language: $language,
+                                layoutDirectionString: $layoutDirectionString
+                            )
+                        }
+                        
+                        EnterTotalView(
+                            bill: $tipModel.bill,
+                            isFocused: $isFocused
                         )
                         
-                        SplitView(
-                            split: $tipModel.split,
-                            alignment: .center
+                        HStack {
+                            ChooseTipView(
+                                tipPercentage: $tipModel.tipPercentage
+                            )
+                            
+                            SplitView(
+                                split: $tipModel.split,
+                                alignment: .center
+                            )
+                        }
+                    }
+                    
+                    // Payment Summary
+                    if !isFocused {
+                        PaymentSummaryView(
+                            tipModel: tipModel,
                         )
+                        
+                        Spacer()
                     }
                 }
-                
-                // Payment Summary
-                if !isFocused {
-                    PaymentSummaryView(tipModel: tipModel)
-                    
-                    Spacer()
-                }
+                .padding()
             }
-            .padding()
-        }
-        .onTapGesture {
-            UIApplication
-                .shared
-                .sendAction(
-                    #selector(UIResponder.resignFirstResponder),
-                    to: nil,
-                    from: nil,
-                    for: nil
-                )
-        }
+            .onTapGesture {
+                UIApplication
+                    .shared
+                    .sendAction(
+                        #selector(UIResponder.resignFirstResponder),
+                        to: nil,
+                        from: nil,
+                        for: nil
+                    )
+            }
     }
 }
 
 #Preview("Landscape", traits: .landscapeLeft) {
-    LandscapeTipCalculatorView()
+    LandscapeTipCalculatorView(language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
 }

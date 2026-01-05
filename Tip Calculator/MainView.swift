@@ -30,7 +30,10 @@ struct MainView: View {
                     layoutDirectionString: $layoutDirectionString
                 )
             } else {
-                LandscapeTipCalculatorView()
+                LandscapeTipCalculatorView(
+                    language: $language,
+                    layoutDirectionString: $layoutDirectionString
+                )
             }
         }
         .padding()

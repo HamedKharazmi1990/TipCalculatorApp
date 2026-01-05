@@ -18,8 +18,16 @@ struct PaymentSummaryView: View {
         horizontalSizeClass == .regular && verticalSizeClass == .regular
     }
     
+    var isPortraitPhone: Bool {
+        horizontalSizeClass == .compact && verticalSizeClass == .regular
+    }
+    
     var font: Font {
         isIPad ? .largeTitle : .headline
+    }
+    
+    var width: CGFloat {
+        isIPad || isPortraitPhone ? .infinity : 220
     }
     
     var body: some View {
@@ -57,6 +65,7 @@ struct PaymentSummaryView: View {
         }
         .backgroundStyle(.myLightGreen.opacity(0.8))
         .clipShape(.rect(cornerRadius: 20))
+        .frame(maxWidth: width)
     }
 }
 
