@@ -19,10 +19,16 @@ struct MainView: View {
         horizontalSizeClass == .compact && verticalSizeClass == .regular
     }
     
+    @Binding var language : String
+    @Binding var layoutDirectionString : String
+    
     var body: some View {
         VStack {
-            if isPortraitPhone {
-                TipCalculatorView()
+            if isIPad || isPortraitPhone {
+                TipCalculatorView(
+                    language: $language,
+                    layoutDirectionString: $layoutDirectionString
+                )
             } else {
                 LandscapeTipCalculatorView()
             }
@@ -32,5 +38,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    MainView(language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
 }

@@ -18,52 +18,65 @@ struct TipCalculatorView: View {
     
     let maxSplit: Int = 10
     
+    @Binding var language : String
+    @Binding var layoutDirectionString : String
+    
     var body: some View {
-        ZStack {
-            BackgroundView()
-            
-            VStack() {
-                TitleView()
+        NavigationStack {
+            ZStack {
+                BackgroundView()
                 
-                Spacer()
-                
-                VStack(alignment: .leading) {
-                    EnterTotalView(
-                        bill: $tipModel.bill,
-                        isFocused: $isFocused
-                    )
-                    
-                    ChooseTipView(tipPercentage: $tipModel.tipPercentage)
-                }
-                SplitView(
-                    split: $tipModel.split,
-                    alignment: .leading
-                )
-                
-                Spacer()
-                
-                // Payment Summary
-                if !isFocused {
-                    PaymentSummaryView(tipModel: tipModel)
+                VStack() {
+                    TitleView()
                     
                     Spacer()
+                    
+                    VStack(alignment: .leading) {
+                        EnterTotalView(
+                            bill: $tipModel.bill,
+                            isFocused: $isFocused
+                        )
+                        
+                        ChooseTipView(tipPercentage: $tipModel.tipPercentage)
+                    }
+                    SplitView(
+                        split: $tipModel.split,
+                        alignment: .leading
+                    )
+                    
+                    Spacer()
+                    
+                    // Payment Summary
+                    if !isFocused {
+                        PaymentSummaryView(tipModel: tipModel)
+                        
+                        Spacer()
+                    }
+                }
+                .padding()
+            }
+            .onTapGesture {
+                UIApplication
+                    .shared
+                    .sendAction(
+                        #selector(UIResponder.resignFirstResponder),
+                        to: nil,
+                        from: nil,
+                        for: nil
+                    )
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    LanguageOptionsTapView(
+                        language: $language,
+                        layoutDirectionString: $layoutDirectionString
+                    )
                 }
             }
-            .padding()
-        }
-        .onTapGesture {
-            UIApplication
-                .shared
-                .sendAction(
-                    #selector(UIResponder.resignFirstResponder),
-                    to: nil,
-                    from: nil,
-                    for: nil
-                )
         }
     }
 }
 
 #Preview {
-    TipCalculatorView()
+    TipCalculatorView(language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
 }
