@@ -18,6 +18,8 @@ struct LandscapeTipCalculatorView: View {
     
     let maxSplit: Int = 10
     
+    @Binding var darkMode : Bool
+    
     @Binding var language : String
     @Binding var layoutDirectionString : String
     
@@ -33,7 +35,8 @@ struct LandscapeTipCalculatorView: View {
                             Spacer()
                             SettingView(
                                 language: $language,
-                                layoutDirectionString: $layoutDirectionString
+                                layoutDirectionString: $layoutDirectionString,
+                                darkMode: $darkMode
                             )
                         }
                         
@@ -79,5 +82,5 @@ struct LandscapeTipCalculatorView: View {
 }
 
 #Preview("Landscape", traits: .landscapeLeft) {
-    LandscapeTipCalculatorView(language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
+    LandscapeTipCalculatorView(darkMode: .constant(false), language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
 }

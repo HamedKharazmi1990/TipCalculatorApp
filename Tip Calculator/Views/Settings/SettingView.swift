@@ -10,11 +10,13 @@ import SwiftUI
 struct SettingView: View {
     @Binding var language : String
     @Binding var layoutDirectionString : String
+    @Binding var darkMode : Bool
     
     var body: some View {
-        LanguageOptionsTapView(
+        SettingsTapView(
             language: $language,
-            layoutDirectionString: $layoutDirectionString
+            layoutDirectionString: $layoutDirectionString,
+            darkMode: $darkMode
         )
     }
 }
@@ -22,6 +24,7 @@ struct SettingView: View {
 #Preview {
     SettingView(
         language: .constant("en"),
-        layoutDirectionString: .constant(LEFT_TO_RIGHT)
+        layoutDirectionString: .constant(LEFT_TO_RIGHT),
+        darkMode: .constant(false)
     )
 }

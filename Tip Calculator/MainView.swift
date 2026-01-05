@@ -19,6 +19,8 @@ struct MainView: View {
         horizontalSizeClass == .compact && verticalSizeClass == .regular
     }
     
+    @Binding var darkMode: Bool
+    
     @Binding var language : String
     @Binding var layoutDirectionString : String
     
@@ -26,20 +28,25 @@ struct MainView: View {
         VStack {
             if isIPad || isPortraitPhone {
                 TipCalculatorView(
+                    darkMode: $darkMode,
                     language: $language,
                     layoutDirectionString: $layoutDirectionString
                 )
             } else {
                 LandscapeTipCalculatorView(
+                    darkMode: $darkMode,
                     language: $language,
                     layoutDirectionString: $layoutDirectionString
                 )
             }
         }
         .padding()
+        .environment(\.colorScheme,
+                      darkMode ? .dark : .light
+        )
     }
 }
 
 #Preview {
-    MainView(language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
+    MainView(darkMode: .constant(false), language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
 }

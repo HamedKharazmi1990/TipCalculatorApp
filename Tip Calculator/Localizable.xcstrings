@@ -48,6 +48,9 @@
         }
       }
     },
+    "Change Language" : {
+
+    },
     "Choose tip" : {
       "localizations" : {
         "es" : {
@@ -113,6 +116,9 @@
           }
         }
       }
+    },
+    "Dark Mode" : {
+
     },
     "English" : {
       "localizations" : {
@@ -201,6 +207,9 @@
           }
         }
       }
+    },
+    "Mode" : {
+
     },
     "Spanish" : {
       "localizations" : {

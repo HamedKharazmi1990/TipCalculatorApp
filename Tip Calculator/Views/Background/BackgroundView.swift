@@ -11,7 +11,7 @@ struct BackgroundView: View {
     var body: some View {
         ZStack {
             Color
-                .white
+                .myWhite
                 .opacity(0.9)
                 .ignoresSafeArea()
             

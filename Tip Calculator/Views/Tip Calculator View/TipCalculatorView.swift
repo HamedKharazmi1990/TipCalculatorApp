@@ -18,6 +18,8 @@ struct TipCalculatorView: View {
     
     let maxSplit: Int = 10
     
+    @Binding var darkMode : Bool
+    
     @Binding var language : String
     @Binding var layoutDirectionString : String
     
@@ -32,7 +34,8 @@ struct TipCalculatorView: View {
                     Spacer()
                     SettingView(
                         language: $language,
-                        layoutDirectionString: $layoutDirectionString
+                        layoutDirectionString: $layoutDirectionString,
+                        darkMode: $darkMode
                     )
                 }
                 
@@ -78,5 +81,5 @@ struct TipCalculatorView: View {
 }
 
 #Preview {
-    TipCalculatorView(language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
+    TipCalculatorView(darkMode: .constant(false), language: .constant("en"), layoutDirectionString: .constant(LEFT_TO_RIGHT))
 }

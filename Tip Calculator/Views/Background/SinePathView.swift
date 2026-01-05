@@ -11,7 +11,7 @@ struct SinePathView: View {
     var body: some View {
         ZStack {
             SineWaveView(
-                fillColor: .green.opacity(0.7),
+                fillColor: .myDarkGreen.opacity(0.7),
                 height: 200
             )
             .frame(
@@ -21,7 +21,7 @@ struct SinePathView: View {
             )
             
             SineWaveView(
-                fillColor: .green.opacity(0.7),
+                fillColor: .myDarkGreen.opacity(0.7),
                 height: 200
             )
             .rotationEffect(Angle(degrees: 180))
