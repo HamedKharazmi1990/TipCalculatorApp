@@ -16,6 +16,11 @@
 			path = "Tip Calculator";
 			sourceTree = "<group>";
 		};
+		23A54E8C2F0C44DF0017D9E1 /* assets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = assets;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 		23A54DB62F0960170017D9E1 = {
 			isa = PBXGroup;
 			children = (
+				23A54E8C2F0C44DF0017D9E1 /* assets */,
 				23A54DC12F0960170017D9E1 /* Tip Calculator */,
 				23A54DC02F0960170017D9E1 /* Products */,
 			);
@@ -62,6 +68,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				23A54DC12F0960170017D9E1 /* Tip Calculator */,
+				23A54E8C2F0C44DF0017D9E1 /* assets */,
 			);
 			name = "Tip Calculator";
 			packageProductDependencies = (
