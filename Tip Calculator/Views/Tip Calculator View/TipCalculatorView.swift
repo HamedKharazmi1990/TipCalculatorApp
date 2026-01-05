@@ -52,8 +52,14 @@ struct TipCalculatorView: View {
             .padding()
         }
         .onTapGesture {
-            // TODO: Implement tap outside of text field
-            print("Implement tap outside of text field")
+            UIApplication
+                .shared
+                .sendAction(
+                    #selector(UIResponder.resignFirstResponder),
+                    to: nil,
+                    from: nil,
+                    for: nil
+                )
         }
     }
 }
