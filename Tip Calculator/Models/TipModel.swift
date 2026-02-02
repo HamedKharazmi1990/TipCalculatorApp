@@ -14,6 +14,8 @@ struct TipModel: Identifiable {
     var split: Int
     var bill: Double
     
+//    var formatter: NumberFormatter
+    
     var tip: Double {
         bill * Double(tipPercentage) / 100.0
     }
@@ -21,7 +23,7 @@ struct TipModel: Identifiable {
         bill + tip
     }
     
-    let formatter: NumberFormatter = {
+    var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         return formatter
