@@ -26,6 +26,7 @@ struct SubTotalView: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(.myDarkGreen)
                 .accessibilityIdentifier(amountAccessibilityId ?? "")
+                .accessibilityElement(children: .ignore)
         }
         .frame(maxWidth: .infinity)
     }
