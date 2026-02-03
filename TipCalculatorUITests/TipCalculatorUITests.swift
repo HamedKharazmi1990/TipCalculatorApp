@@ -73,3 +73,31 @@ final class when_user_enter_total_amount: XCTestCase {
         XCTAssertEqual(tipAmountText.label, "$10.00")
     }
 }
+
+final class when_user_pick_tip_percent: XCTestCase {
+    
+    func test_should_make_sure_user_choose_tip_percent_25() {
+        
+        let app = XCUIApplication()
+        app.activate()
+        app.textFields["totalAmountText"].tap()
+        let current = app.textFields["totalAmountText"].value as? String ?? ""
+        app.textFields["totalAmountText"].typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: current.count))
+        app.textFields["totalAmountText"].typeText("$100.00")
+        
+        app.staticTexts["25"].tap()
+        
+        app.tap()
+        sleep(1)
+        
+        let totalPerPersonAmountText = app.staticTexts["totalPerPersonAmountText"]
+        XCTAssertEqual("$125.00", totalPerPersonAmountText.label)
+        
+        let billAmountText = app.staticTexts["billAmountText"]
+        XCTAssertEqual("$100.00", billAmountText.label)
+        
+        let tipAmountText = app.staticTexts["tipAmountText"]
+        XCTAssertEqual("$25.00", tipAmountText.label)
+        
+    }
+}
