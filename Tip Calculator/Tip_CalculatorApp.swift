@@ -9,6 +9,15 @@ import SwiftUI
 
 @main
 struct Tip_CalculatorApp: App {
+    
+    init() {
+            if CommandLine.arguments.contains("-uiTest_USLocale") {
+                UserDefaults.standard.set(["en_US"], forKey: "AppleLanguages")
+                UserDefaults.standard.set("en_US", forKey: "AppleLocale")
+                UserDefaults.standard.synchronize()
+            }
+        }
+    
     @AppStorage("language") var language: String = "en"
     @AppStorage("languageDirectionString") var languageDirectionString: String = LEFT_TO_RIGHT
     @AppStorage("darkMode") var darkMode: Bool = false

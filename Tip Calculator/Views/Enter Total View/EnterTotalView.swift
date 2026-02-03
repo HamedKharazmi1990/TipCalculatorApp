@@ -46,7 +46,7 @@ struct EnterTotalView: View {
                 "Amount",
                 value: $bill,
                 format: .currency(code: Locale.current.currency?.identifier ?? "USD")
-            )
+            ).accessibilityIdentifier("totalAmountText")
             .focused($focusState)
             .onChange(of: focusState) { _, newValue in
                 isFocused = newValue

@@ -52,6 +52,17 @@
                ReferencedContainer = "container:Tip Calculator.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "232644F32F3126DD005B51E8"
+               BuildableName = "TipCalculatorUITests.xctest"
+               BlueprintName = "TipCalculatorUITests"
+               ReferencedContainer = "container:Tip Calculator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

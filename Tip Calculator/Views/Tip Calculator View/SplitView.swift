@@ -47,6 +47,7 @@ struct SplitView: View {
                     }
                 } label: {
                     Image(systemName: "plus.circle.fill")
+                        .accessibilityIdentifier("addSplitText")
                 }
             }
             .font(.title)

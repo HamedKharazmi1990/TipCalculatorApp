@@ -36,7 +36,8 @@ struct PaymentSummaryView: View {
                 title: "Total per person",
                 titleFont: font,
                 amount: tipModel.totalPerPerson,
-                amountFont: font
+                amountFont: font,
+                amountAccessibilityId: "totalPerPersonAmountText"
             )
             .frame(
                 maxHeight: .infinity
@@ -47,13 +48,15 @@ struct PaymentSummaryView: View {
                     title: "Bill",
                     titleFont: font,
                     amount: tipModel.billPerPerson,
-                    amountFont: font
+                    amountFont: font,
+                    amountAccessibilityId: "billAmountText"
                 )
                 SubTotalView(
                     title: "Tip",
                     titleFont: font,
                     amount: tipModel.tipPerPerson,
-                    amountFont: font
+                    amountFont: font,
+                    amountAccessibilityId: "tipAmountText"
                 )
             }
         } label: {

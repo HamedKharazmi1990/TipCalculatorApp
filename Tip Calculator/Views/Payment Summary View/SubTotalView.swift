@@ -13,6 +13,8 @@ struct SubTotalView: View {
     let amount: String
     let amountFont: Font
     
+    var amountAccessibilityId: String? = nil
+    
     var body: some View {
         VStack {
             Text(title)
@@ -23,6 +25,7 @@ struct SubTotalView: View {
                 .font(amountFont)
                 .fontWeight(.semibold)
                 .foregroundStyle(.myDarkGreen)
+                .accessibilityIdentifier(amountAccessibilityId ?? "")
         }
         .frame(maxWidth: .infinity)
     }
